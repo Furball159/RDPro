@@ -21,4 +21,7 @@
 <p>- Favourites Page - Will store favourite connections</p>
 <p>- History Page - Will show past connection history, when connections are added/deleted/modified</p>
 <p>- Display Settings & Experince Settings</p>
+<p>- Import/Upgrade .rdp Files</p>
 <p>- Groups - May not be the next version but soon!</p>
+<p>- Add Full Program Export/Import</p>
+<p>- Add OOBE - May not be the next version may be closer to RC1/2</p>
