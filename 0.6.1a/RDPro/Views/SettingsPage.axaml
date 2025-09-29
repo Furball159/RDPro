@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:RDPro.ViewModels"
+             xmlns:conv="clr-namespace:RDPro.Converters"
+             x:Class="RDPro.Views.SettingsPage">
+    <UserControl.DataContext>
+        <vm:SettingsViewModel />
+    </UserControl.DataContext>
+
+    <StackPanel Margin="20" Spacing="16">
+
+        <!-- Theme Selector -->
+        <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+            <TextBlock Text="Theme:" VerticalAlignment="Center"/>
+            <ComboBox Width="160"
+                      ItemsSource="{Binding Themes}"
+                      SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
+        </StackPanel>
+
+        <!-- Accent color toggle -->
+        <ToggleSwitch Content="Use Windows accent color"
+                      IsChecked="{Binding PreferUserAccentColor, Mode=TwoWay}" />
+
+        <!-- Custom Accent Color Picker (visible when toggle is off) -->
+        <StackPanel Orientation="Horizontal"
+                    Spacing="10"
+                    IsVisible="{Binding PreferUserAccentColor, Converter={StaticResource BoolNegationConverter}}">
+            <TextBlock Text="Custom Accent:" VerticalAlignment="Center"/>
+            <ColorPicker Width="180" Height="40"
+                         Color="{Binding CustomAccentColor, Mode=TwoWay}" />
+            <TextBlock Text="{Binding CustomAccentColor}" 
+                       VerticalAlignment="Center" />
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>

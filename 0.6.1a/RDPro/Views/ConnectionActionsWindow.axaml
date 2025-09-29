@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:RDPro.ViewModels"
+        x:Class="RDPro.Views.ConnectionActionsWindow"
+        Width="350" Height="300" WindowStartupLocation="CenterOwner" Title="Connection Actions">
+
+  <Design.DataContext>
+    <vm:AllConnectionsViewModel/>
+  </Design.DataContext>
+
+  <StackPanel Margin="10" Spacing="8">
+    <TextBlock x:Name="TitleText" FontWeight="Bold" FontSize="16"/>
+    <StackPanel Orientation="Vertical" Spacing="6">
+      <Button Content="Connect" x:Name="BtnConnect"/>
+      <Button Content="Connect Without RD Gateway" x:Name="BtnConnectNoGateway"/>
+      <Button Content="Edit Connection" x:Name="BtnEdit"/>
+      <Button Content="View .RDPX File" x:Name="BtnViewRDPX"/>
+      <Button Content="View .RDP File" x:Name="BtnViewRDP"/>
+      <Button Content="Delete" x:Name="BtnDelete"/>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+      <Button Content="Close" Width="80" Click="Close_Click"/>
+    </StackPanel>
+  </StackPanel>
+</Window>
