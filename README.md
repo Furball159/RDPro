@@ -24,3 +24,5 @@ Good question check the releases tab for info on downloads, if you find nothing 
 * - Feature is not fully completed at time of writing
 <p></p>
 ** - More detail is provided later in the readme.
+<p></p>
+For More detail refer to https://github.com/Furball159/RDPro/blob/main/Dev%20Log.md
