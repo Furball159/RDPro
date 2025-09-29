@@ -3,9 +3,9 @@ A Remote Desktop Wrapper Application, Designed and Invisioned by yours truly, an
 
 <h1>Why Remote Desktop - Pro?</h1>
 Remote desktop Pro is an application that is designed to make the use of the old school mstc.exe easier!, it allows for most of the functionality of the old program all in one neat interface powered by .NET Framework 8.0 using Fluent Avalonia AXAML styled formating with Reactive UI. The Program was thought of on a whim by myself when the default Windows app for Windows 10 & 11 failed to fufill what I needed, Goodbye needing a Microsoft Account just to access remote computers! RD Pro allows Grouping*, Gateway Management, User Name storage, Friendly Names, Display & Experince Settings* and Folder/Drive/Printer Redirections*
-<break></break>
+<p></p>
 The Program supports all Password Based Authentication Files from a default mstc.exe and makes its own .rdp files for storing, meaning you can export the files for use in mstc.exe at any time. All RDPro related formatting/sorting is stored in it's very own .rdpx file with a UUID that matches the .rdp file, this allows all of the neat features it adds, without ruining the ability to easily go back!
-<break></break>
+<p></p>
 The program will have more capabilites like exporting settings, reseting user settings and Versioning added in a later version. But for now my main goal is to deliver a full functioning app and work on QOL later.
 
 <h1>Why AI?</h1>
@@ -22,4 +22,5 @@ Good question check the releases tab for info on downloads, if you find nothing 
 
 <h3>Legend</h3>
 * - Feature is not fully completed at time of writing
+<p></p>
 ** - More detail is provided later in the readme.
