@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="using:RDPro.Converters">
+
+  <!-- Already existing converters -->
+  <converters:BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+  <converters:InverseBooleanToVisibilityConverter x:Key="InverseBoolToVisibility" />
+  <converters:NoConnectionsConverter x:Key="NoConnections" />
+  <converters:HasConnectionsConverter x:Key="HasConnections" />
+
+  <!-- NEW: Boolean negation (true -> false, false -> true) -->
+  <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+
+</ResourceDictionary>

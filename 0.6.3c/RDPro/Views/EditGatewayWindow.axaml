@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:RDPro.ViewModels"
+    xmlns:conv="clr-namespace:RDPro.Converters"
+    x:Class="RDPro.Views.EditGatewayWindow"
+    Width="420" Height="260" Title="Edit Gateway">
+    <Design.DataContext>
+        <vm:EditGatewayViewModel />
+    </Design.DataContext>
+
+    <StackPanel Margin="12" Spacing="8">
+        <TextBlock Text="Hostname" />
+        <TextBox Text="{Binding Hostname}" />
+
+        <TextBlock Text="Friendly Name (optional)" />
+        <TextBox Text="{Binding FriendlyName}" />
+
+        <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+            <CheckBox IsChecked="{Binding UsePcCredentials}" Content="Use PC Credentials" />
+        </StackPanel>
+
+    <TextBlock Text="Gateway Username" IsVisible="{Binding UsePcCredentials, Converter={StaticResource InverseBoolToVisibility}}" />
+    <TextBox Text="{Binding GatewayUsername}" IsVisible="{Binding UsePcCredentials, Converter={StaticResource InverseBoolToVisibility}}" />
+
+    <TextBlock Text="Gateway Password" IsVisible="{Binding UsePcCredentials, Converter={StaticResource InverseBoolToVisibility}}" />
+    <TextBox Text="{Binding GatewayPassword}" IsVisible="{Binding UsePcCredentials, Converter={StaticResource InverseBoolToVisibility}}" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+            <Button Content="Save" Command="{Binding SaveCommand}" />
+            <Button Content="Cancel" Command="{Binding CancelCommand}" />
+        </StackPanel>
+    </StackPanel>
+</Window>

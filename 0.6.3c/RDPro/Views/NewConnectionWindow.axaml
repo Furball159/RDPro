@@ -1,0 +1,89 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:RDPro.ViewModels"
+        mc:Ignorable="d"
+        x:Class="RDPro.Views.NewConnectionWindow"
+        Width="472" Height="460"
+        Title="New Connection"
+        WindowStartupLocation="CenterOwner">
+
+    <Window.Resources>
+        <DataTemplate x:Key="GatewayItemTemplate">
+            <TextBlock Text="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
+    
+    <Design.DataContext>
+        <vm:NewConnectionViewModel/>
+    </Design.DataContext>
+
+    <TabControl Margin="10">
+        <!-- General Tab -->
+        <TabItem Header="General">
+        <Grid Margin="10"
+            RowDefinitions="Auto,20,Auto,20,Auto,20,Auto,*,Auto"
+            ColumnDefinitions="Auto,*">
+
+                <!-- Connection Name -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Connection Name *"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Width="250"
+                         Text="{Binding ConnectionName, Mode=TwoWay}"
+                         TabIndex="0"/>
+
+                <!-- Server Address -->
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Server Address *"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Width="250"
+                         Text="{Binding ServerAddress, Mode=TwoWay}"
+                         TabIndex="1"/>
+
+                <!-- Username -->
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Username (Optional)"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox Grid.Row="4" Grid.Column="1" Width="250"
+                         Text="{Binding Username, Mode=TwoWay}"
+                         TabIndex="2"/>
+
+                <!-- RD Gateway -->
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="RD Gateway"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <ComboBox Grid.Row="6" Grid.Column="1" Width="250"
+                          ItemsSource="{Binding AvailableGateways}"
+                          SelectedItem="{Binding SelectedGateway, Mode=TwoWay}"
+                          TabIndex="3">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Display}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <!-- Buttons -->
+                <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal"
+                            HorizontalAlignment="Right" Margin="0,20,0,0">
+                    <Button Content="Save" Width="80" Margin="0,0,5,0"
+                            Command="{Binding SaveCommand}"
+                            IsDefault="True"
+                            TabIndex="5"/>
+                    <Button Content="Cancel" Width="80"
+                            IsCancel="True"
+                            Command="{Binding CancelCommand}"
+                            TabIndex="6"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <!-- Display Tab -->
+        <TabItem Header="Display &amp; Resources">
+            <TextBlock Margin="10" Text="Display &amp; Resources settings go here..."/>
+        </TabItem>
+
+        <!-- Performance Tab -->
+        <TabItem Header="Experience &amp; Performance">
+            <TextBlock Margin="10" Text="Performance options go here..."/>
+        </TabItem>
+    </TabControl>
+</Window>
