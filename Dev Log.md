@@ -28,3 +28,38 @@
 <p>- Groups - May not be the next version but soon!</p>
 <p>- Add Full Program Export/Import</p>
 <p>- Add OOBE - May not be the next version may be closer to RC1/2</p>
+<p></p>
+<h2>30/09/2025 the program is at V0.6.3c Beta</h2>
+<p>The last 5 versions inbetween now and the past dev log were minor failed bug fixes, code tidying and UX fixes this dev log will cover all changes between 0.6.1a to 0.6.3c Beta</p>
+<p>A raw copy is not ready at this time as it is in a unstable state, check the files for a /0.6.3c folder if you would still wish to use this feature</p>
+<h3>Added</h3>
+<p>- All Connections Search**</p>
+<p>- Favourites Page*</p>
+<p>- Favourites Page Logic**</p>
+<p>- Favourites Page Search**</p>
+<p>- Enabled Remove Connection button on title bar*</p>
+<p>- Full Application Reset**</p>
+<p>- Sub-section titles in Settings<*/p>
+<h3>Fixed</h3>
+<p>- Delete Connection is now Remove Connection like it was always meant to be**</p>
+<h3>Removed</h3>
+<p>- Nothing was removed from this build only replaced/fixed</p>
+<h3>QOL Changes</h3>
+<p><bold>A small list of changes for quality of life</bold></p>
+<p>- Made all Fluent Avalonia instances of delete buttons a soft red to indicate danger*</p>
+<p>- Sub-section titles were made to be larger than other text (0.6.3b)*</p>
+<p>- Made delete dialog more detailed and sharp</p>
+<p>- Made Destroy Data very obvious that a backup/export of your data is recommended before continuing**</p>
+<h3>For the next version!</h3>
+<p>- Everything not done from the previous list</p>
+<p>- Favourite Icon indicator in All Connections</p>
+<p>- Individual .rdp/.rdpx files import/export</p>
+<p>- Quick launch for mstc.exe (May Not be added)</p>
+<p>- One time connection (May not be added till 0.7)</p>
+<p>- Group Management (Grouping may not be added until V0.7)</p>
+<p>- If history gets added a clear history option in settings (may be added but not implemented until later versions, with full working history)</p>
+<h3>Next Major Build</h3>
+<p>V0.7a will be the next major build after 0.6.5a, if 0.6.5a is stable enough</p>
+<p>V0.7 is planned to be fully compiled and released if the program seems stable enough in the proper releases tab. If all goes to plan V0.8/0.9 will be RC builds working more on QOL and program efficeny rather than features.</p>
+<h4>Stability of Build</h4>
+<p>6/10 - Haven't experinced many issues, but many features being added have left loose ends making the program feel broken and unfinished, somewhat worse than the last build, the only thing saving it is the fact that it does more.</p>
