@@ -63,3 +63,35 @@
 <p>V0.7 is planned to be fully compiled and released if the program seems stable enough in the proper releases tab. If all goes to plan V0.8/0.9 will be RC builds working more on QOL and program efficeny rather than features.</p>
 <h4>Stability of Build</h4>
 <p>6/10 - Haven't experinced many issues, but many features being added have left loose ends making the program feel broken and unfinished, somewhat worse than the last build, the only thing saving it is the fact that it does more.</p>
+
+<h2>1/10/2025 - Build V0.6.8b - PVT1</h2>
+<p>Wow, it's amazing how much a bit of TLC and learning can do!</p>
+<p>This build will contain a full release, but it is still a beta and is unfinished</p>
+<p>MAJOR NOTE: THIS BUILD WAS FULLY WRITTEN BY HAND ONLY CORRECTED WHEN NEEDED WITH AI, NO FEATURES WERE IMPLEMENTED USING AI ONLY PATCHED</p>
+<h3>Added:</h3>
+<h4>Advanced User Settings</h4>
+<p>- Export User Data/Full Program Export</p>
+<p>- Import User Data/Full Program Import</p>
+<p>- Clear History Button - History not implemented</p>
+<p>- Destroy User Data/Full Program Reset</p>
+<h4>About Remote Connection Pro Section</h4>
+<p>- Version Number in Settings</p>
+<p>- Github Button in program</p>
+<p>- Privacy Policy Button (Linked to incompleted Privacy Policy)</p>
+<p>- About Button (Opens Advanced About Tab)</p>
+<p>- Advanced About Page - Contains Name, Build, Creator, and a little description</p>
+<h4>Groups</h4>
+<p>- Added Groups Page</p>
+<p>- Added Group Management</p>
+<p>- Created groups.json (AI did have to help here)</p>
+<p>- Added Edit Groups</p>
+<h4>General</h4>
+<p>- Made all Remove buttons other than ones in Context Panel Red (Previosuly was glitcy - wasn't discovered till after the previous log)</p>
+<h3>Fixed:</h3>
+<p>- Stability Improvements</p>
+<h3>Bugs:</h3>
+<p>- No Bugs Found at this time</p>
+<h3>Removed:</h3>
+<p>- OOBE has been removed from the plan</p>
+<h3>Next version V0.7 - PVT2 (Possible RC)</h3>
+<p>- Will add remaining logic for History and Groups</p>
