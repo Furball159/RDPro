@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:RDPro.ViewModels"
+             x:DataType="vm:GroupsViewModel"
+             x:Class="RDPro.Views.GroupsPage">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+            <TextBox Watermark="New group name..."
+                     Text="{Binding NewGroupName}"
+                     Width="300"/>
+            <Button Content="Add Group"
+                    Command="{Binding AddGroupCommand}"
+                    Classes="accent"/>
+            <Button Content="Edit Selected"
+                    Command="{Binding EditGroupCommand}"/>
+            <Button Content="Remove Selected"
+                    Background="#FF474C"
+                    Foreground="White"
+                    Command="{Binding RemoveGroupCommand}"/>
+        </StackPanel>
+
+        <ListBox Grid.Row="1" ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedGroup}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" Margin="4"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</UserControl>

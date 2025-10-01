@@ -1,0 +1,107 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:RDPro.ViewModels"
+             xmlns:views="clr-namespace:RDPro.Views.Converters"
+             xmlns:conv="clr-namespace:RDPro.Converters"
+             x:Class="RDPro.Views.AllConnectionsPage">
+
+    <UserControl.Resources>
+        <views:ConnectionNameConverter x:Key="ConnNameConv" />
+        <views:ConnectionAddressConverter x:Key="ConnAddrConv" />
+        <conv:IsFavouriteToHeaderConverter x:Key="FavHeaderConv" />
+    <conv:StringToBoolConverter x:Key="StringToBool" />
+    <conv:StringToBoolConverter x:Key="StringToBool_Inverted" Invert="True" />
+    </UserControl.Resources>
+
+    <Design.DataContext>
+        <vm:AllConnectionsViewModel/>
+    </Design.DataContext>
+
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Padding="10,5" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource ControlBorderBrush}">
+            <Grid ColumnDefinitions="*,Auto,Auto,Auto" RowDefinitions="Auto" VerticalAlignment="Center">
+                
+                <!-- Search Box -->
+                <TextBox Grid.Column="0"
+                         Watermark="Search connections..."
+                         Text="{Binding SearchText, Mode=TwoWay}"
+                         VerticalAlignment="Center"
+                         Margin="0,0,20,0" />
+
+                <!-- Action Buttons -->
+                <Button Grid.Column="1" Content="Add Connection"
+                        Width="150"
+                        Command="{Binding OpenNewConnectionDialogCommand}" Margin="5,0" />
+                
+                <Button Grid.Column="2" Content="Import Connections"
+                        Width="150"
+                        Command="{Binding ImportConnectionsCommand}" Margin="5,0" />
+                
+                <Button Grid.Column="3" Content="Remove Connection"
+                        Background="#FF474C"
+                        Foreground="White"
+                        Width="150" Margin="5,0"
+                        Command="{Binding RemoveSelectedConnectionCommand}" />
+            </Grid>
+        </Border>
+
+        <Grid>
+            <!-- List of connections, hidden when the filtered list is empty -->
+            <ListBox x:Name="ConnectionsListBox" ItemsSource="{Binding Connections}" SelectedItem="{Binding SelectedConnection, Mode=TwoWay}"
+                     Margin="10,0,10,10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid PointerPressed="Item_PointerPressed" ContextRequested="Item_ContextRequested" Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Connect" Command="{Binding DataContext.ConnectCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
+                                    <MenuItem Header="Connect Without RD Gateway" Command="{Binding DataContext.ConnectWithoutGatewayCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
+                                    <Separator />
+                                    <MenuItem Header="Edit Connection" Command="{Binding DataContext.EditConnectionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
+                                    <Separator />
+                                    <MenuItem Header="View .RDPX File" Command="{Binding DataContext.ShowRdpXFileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
+                                    <MenuItem Header="View .RDP File" Command="{Binding DataContext.ShowRdpFileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
+                                    <MenuItem Header="Export .RDPX File" Command="{Binding DataContext.ExportRdpXFileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
+                                    <Separator />
+                                    <MenuItem Header="{Binding IsFavourite, Converter={StaticResource FavHeaderConv}}" Command="{Binding DataContext.ToggleFavouriteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
+                                    <Separator />
+                                    <MenuItem Header="Remove Connection" Command="{Binding DataContext.RemoveSpecificConnectionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
+                                </ContextMenu>
+                            </Grid.ContextMenu>
+
+                            <Grid Grid.Column="0" Margin="6,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <!-- Primary: the friendly display name (or the address fallback) -->
+                                <TextBlock Grid.Row="0" Text="{Binding Converter={StaticResource ConnNameConv}}" FontWeight="Bold" VerticalAlignment="Center" />
+
+                                <!-- Secondary: hostname/address shown only when there is a friendly name (ConnectionName) -->
+                                <TextBlock Grid.Row="1" Text="{Binding Converter={StaticResource ConnAddrConv}}" Opacity="0.7" FontStyle="Italic" FontSize="12"
+                                           IsVisible="{Binding ConnectionName, Converter={StaticResource StringToBool}}" />
+                            </Grid>
+
+                            <!-- Hamburger actions button positioned in far-right column -->
+                            <Button Grid.Column="2" Content="⋮" Width="30" Margin="8,0" VerticalAlignment="Center" Click="Item_ActionsButtonClick" ToolTip.Tip="Actions" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <!-- Message shown when there are no connections to display (either initially or after filtering) -->
+            <TextBlock Text="You Have No Connections, To Get Started Add or Import One"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="Gray"
+                       IsVisible="{Binding !Connections.Count}"/> 
+        </Grid>
+    </DockPanel>
+</UserControl>

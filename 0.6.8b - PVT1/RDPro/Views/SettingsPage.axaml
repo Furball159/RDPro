@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:RDPro.ViewModels"
+             xmlns:conv="clr-namespace:RDPro.Converters"
+             x:Class="RDPro.Views.SettingsPage">
+    <UserControl.DataContext>
+        <vm:SettingsViewModel />
+    </UserControl.DataContext>
+
+    <StackPanel Margin="20" Spacing="16">
+        <TextBlock Text="Appearance" FontSize="20" VerticalAlignment="Center"/>
+        <!-- Theme Selector -->
+        <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+            
+            <TextBlock Text="Theme:" VerticalAlignment="Center"/>
+            <ComboBox Width="160"
+                      ItemsSource="{Binding Themes}"
+                      SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
+        </StackPanel>
+
+        <!-- Accent color toggle -->
+        <ToggleSwitch Content="Use Windows accent color"
+                      IsChecked="{Binding PreferUserAccentColor, Mode=TwoWay}" />
+
+        <!-- Custom Accent Color Picker (visible when toggle is off) -->
+        <StackPanel Orientation="Horizontal"
+                    Spacing="10"
+                    IsVisible="{Binding PreferUserAccentColor, Converter={StaticResource BoolNegationConverter}}">
+            <TextBlock Text="Custom Accent:" VerticalAlignment="Center"/>
+            <ColorPicker Width="180" Height="40"
+                         Color="{Binding CustomAccentColor, Mode=TwoWay}" />
+            <TextBlock Text="{Binding CustomAccentColor}" 
+                       VerticalAlignment="Center" />
+        </StackPanel>
+
+        <!-- Export/Import/Destroy User Data-->
+        <TextBlock Text="Advanced User Settings" FontSize="20" VerticalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button Content="Export User Data"
+                    Width="150"
+                    Command="{Binding ExportSettingsCommand}" />
+            <Button Content="Import User Data"
+                    Width="150"
+                    Command="{Binding ImportSettingsCommand}" />
+            <!-- The below will clear all history -->
+            <Button Content="Clear History" 
+                    Background="#FF474C"
+                    Foreground="White"
+                    Width="150"
+                    Command="{Binding ClearHistoryCommand}" />
+            <!--Above is the import/export full database and settings command-->
+            <Button Content="Destroy User Data" 
+                    Background="#FF474C"
+                    Foreground="White"
+                    Width="150"
+                    Command="{Binding DestroyUserDataCommand}" />
+            <!-- The Above will Clear All User Settings incl. Usernames, Gateways, Connections, Settings, History, etc.-->
+  
+        </StackPanel>
+        <!--About Section-->
+        <TextBlock Text="About Remote Desktop Connection Pro" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Text="v0.6.8b Furball159 (Ethan C) 2025-2025" VerticalAlignment="Center" FontSize="15"/>
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button Content="GitHub" Width="120" Command="{Binding OpenGitHubCommand}"/>
+            <Button Content="Privacy Policy" Width="120" Command="{Binding OpenPrivacyPolicyCommand}"/>
+            <Button Content="About" Width="120" Command="{Binding OpenAboutCommand}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

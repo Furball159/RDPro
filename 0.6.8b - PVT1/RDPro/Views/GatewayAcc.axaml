@@ -1,0 +1,65 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:RDPro.ViewModels"
+             xmlns:conv="clr-namespace:RDPro.Converters"
+             x:Class="RDPro.Views.GatewayAcc">
+    <UserControl.DataContext>
+        <vm:GatewayManagementViewModel />
+    </UserControl.DataContext>
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Spacing="8" Grid.Row="0" VerticalAlignment="Center">
+            <TextBox Width="300" Watermark="example.gateway.local" Text="{Binding NewHostname, Mode=TwoWay}" />
+            <Button Content="Add Gateway" Command="{Binding AddCommand}" />
+            <Button Content="Edit" Command="{Binding EditCommand}" />
+            <Button Content="Remove Gateway" Background="#FF474C" Foreground="White" Command="{Binding RemoveCommand}" />
+        </StackPanel>
+
+    <Grid Grid.Row="1" Margin="0,8,0,0">
+        <Grid.Resources>
+            <!-- converter for empty-state (visible when count == 0) -->
+            <conv:CountToBoolConverter x:Key="EmptyConverter" Invert="True" />
+            <!-- converter for non-empty (visible when count > 0) -->
+            <conv:CountToBoolConverter x:Key="NonEmptyConverter" Invert="False" />
+            <!-- converter to test whether a string is non-empty -->
+            <conv:StringToBoolConverter x:Key="StringToBool" />
+            <!-- an explicitly inverted instance for convenience -->
+            <conv:StringToBoolConverter x:Key="StringToBool_Inverted" Invert="True" />
+        </Grid.Resources>
+
+        <TextBlock Text="You Have No Gateways, add one to get started" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray"
+                   IsVisible="{Binding Gateways.Count, Converter={StaticResource EmptyConverter}}" />
+
+        <ListBox ItemsSource="{Binding Gateways}" SelectedItem="{Binding SelectedGateway}"
+                 IsVisible="{Binding Gateways.Count, Converter={StaticResource NonEmptyConverter}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Primary when FriendlyName exists -->
+                        <TextBlock Grid.Row="0" Text="{Binding FriendlyName}" FontSize="14" Foreground="White"
+                                   IsVisible="{Binding FriendlyName, Converter={StaticResource StringToBool}}" />
+
+                        <!-- Primary fallback when no FriendlyName -->
+                        <TextBlock Grid.Row="0" Text="{Binding Hostname}" FontSize="14" Foreground="White"
+                                   IsVisible="{Binding FriendlyName, Converter={StaticResource StringToBool_Inverted}}" />
+
+                        <!-- Secondary grey hostname visible only when FriendlyName exists -->
+                        <TextBlock Grid.Row="1" Text="{Binding Hostname}" FontSize="12" Foreground="#FF9E9E9E"
+                                   IsVisible="{Binding FriendlyName, Converter={StaticResource StringToBool}}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+    </Grid>
+</UserControl>

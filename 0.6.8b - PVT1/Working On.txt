@@ -1,0 +1,19 @@
+- Add Full Program Export/Import ✅
+
+- Display Settings & Experience Settings
+
+- Favourite Icon indicator in All Connections
+
+- Individual .rdp/.rdpx files import/export ✅
+
+- Quick launch for mstc.exe (May Not be added)
+
+- One time connection (May not be added till 0.7)
+
+- Group Management (Grouping may not be added until V0.7) ✅
+
+- If history gets added a clear history option in settings (may be added but not implemented until later versions, with full working history) ✅⚠️ - Feature Not Implemented - Button is there
+
+- Add OOBE - May not be the next version may be closer to RC1/2 - Scrapped in Favour of speed (also had no clue how to add it lol)
+
+- About Section ✅
